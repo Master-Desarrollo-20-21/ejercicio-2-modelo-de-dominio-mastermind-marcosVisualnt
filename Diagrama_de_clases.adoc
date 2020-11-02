@@ -1,0 +1,58 @@
+@startuml
+
+title Mastermind - Class Diagram
+
+Mastermind *--> Board
+Mastermind *--> "2" Player
+Mastermind *--> Turn
+
+Board *-->  SecretCombination
+Board *--> "1..15" GuessCombination
+Board *--> "1..15" KeyCombination
+
+Turn --> Player
+
+Player <|-- Codemaker
+Player <|-- Codebreaker
+
+Codemaker o--> SecretCombination
+Codemaker  --> PutKeyPeg
+Codemaker  --> PutSecretCombination
+
+Codebreaker o--> "1..15" GuessCombination
+Codebreaker --> PutCodePeg
+Codebreaker --> Goal
+
+Goal --> "5" KeyPegBlack
+
+SecretCombination *--> "5" CodePeg
+
+GuessCombination *--> "5" CodePeg
+GuessCombination --> Position
+
+KeyPegBlack --> GuessCombination
+KeyPegBlack  --> Position
+
+KeyCombination *--> "5" KeyPeg
+
+KeyPeg  <|-- KeyPegWhite
+KeyPeg  <|-- KeyPegBlack
+KeyPeg  --> CodePeg
+
+CodePeg <|-- Pink
+CodePeg <|-- White
+CodePeg <|-- Black
+CodePeg <|-- Brown
+CodePeg <|-- Red
+CodePeg <|-- Blue
+CodePeg <|-- Green
+CodePeg <|-- Yellow
+
+Bob -> Alice: Hello!
+
+                 
+
+
+@enduml
+
+
